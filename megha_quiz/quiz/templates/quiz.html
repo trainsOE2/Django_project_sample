@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block container %}
+<div class="container">
+    <form class="form" method="post" action="">
+    {% csrf_token %}
+    {% for item in questions %}
+        <h3>
+            Q : {{ item.question }} 
+        </h3>
+        <div class="radio">
+          <label><input type="radio" name="option_{{item.id}}" value="1" required="true">{{item.option_1 }}</label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="option_{{item.id}}" value="2" required="true">{{item.option_2 }}</label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="option_{{item.id}}" value="3" required="true">{{item.option_3 }}</label>
+        </div>
+    {% endfor %}
+    
+    <button class="btn btn-md btn-primary btn-danger" type="submit">Evaluate</button>
+  </form>
+</div>
+{% endblock %}
